@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting...</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+          sans-serif;
+        padding: 2rem;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>This page requires JavaScript to redirect.</noscript>
+    <p id="status">Redirecting...</p>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var targetUrl = params.get("url");
+        var statusEl = document.getElementById("status");
+
+        if (!targetUrl) {
+          statusEl.textContent = "Missing required 'url' query parameter.";
+          return;
+        }
+
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+
+        if (isMobile) {
+          var expoUrl =
+            "exp://u.expo.dev/11992a76-78d9-4593-b355-1fa672937646/group/2ca0cee1-4903-4990-a68a-915d3ed6bab2?url=" +
+            encodeURIComponent(targetUrl);
+          window.location.replace(expoUrl);
+        } else {
+          window.location.replace(targetUrl);
+        }
+      })();
+    </script>
+  </body>
+</html>
