@@ -18,6 +18,8 @@
     <p id="status">Redirecting...</p>
     <script>
       (function () {
+        var EXPO_PROJECT_ID = "11992a76-78d9-4593-b355-1fa672937646";
+        var LATEST_EXPO_GROUP_ID = "a44b90ba-afad-4bd3-b65e-68f53ac23ed0";
         var params = new URLSearchParams(window.location.search);
         var targetUrl = params.get("url");
         var statusEl = document.getElementById("status");
@@ -33,7 +35,11 @@
 
         if (isMobile) {
           var expoUrl =
-            "exp://u.expo.dev/11992a76-78d9-4593-b355-1fa672937646/group/4ef406d0-2367-4fb0-8b15-096f255197be?url=" +
+            "exp://u.expo.dev/" +
+            EXPO_PROJECT_ID +
+            "/group/" +
+            LATEST_EXPO_GROUP_ID +
+            "?url=" +
             encodeURIComponent(targetUrl);
           window.location.replace(expoUrl);
         } else {
